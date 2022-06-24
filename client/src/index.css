@@ -1,11 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;800&display=swap');
 
 :root {
-  --clr-primary: hsl(197, 95%, 32%);
+  /* colors */
+  --clr-primary: hsl(225, 73%, 57%);
   --clr-error: hsl(0, 68%, 48%);
   --clr-background-light: hsl(0, 0%, 95%);
   --clr-white: hsl(0, 0%, 100%);
   --clr-gray-800: hsl(0, 0%, 20%);
+  --clr-gray-700: hsl(0, 0%, 33%);
+
+  /* font */
+  --font-md: clamp(1.2rem, 3vh, 1.5rem);
+  --font-sm: clamp(0.9rem, 2vh, 1.1rem);
 }
 
 /* CSS RESET  */
@@ -78,6 +84,11 @@ select {
 }
 /* --- */
 
+a:hover,
+a:focus {
+  filter: brightness(150%);
+}
+
 header {
   background-color: var(--clr-white);
 }
@@ -100,4 +111,42 @@ header a {
   width: min(100%, 1400px);
   padding: 2em;
   margin: 0 auto;
+}
+
+/* home */
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.workout-details {
+  background-color: var(--clr-white);
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  position: relative;
+  box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.05);
+}
+
+.workout-details h2 {
+  margin-bottom: 10px;
+  font-size: var(--font-md);
+  color: var(--clr-primary);
+}
+
+.workout-details p {
+  font-size: var(--font-sm);
+  color: var(--clr-gray-700);
+}
+
+.workout-details span {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background-color: var(--clr-background-light);
+  color: var(clr-gray-800);
+  padding: 5px;
+  border-radius: 50%;
 }
