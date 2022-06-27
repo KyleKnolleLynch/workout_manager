@@ -2,7 +2,7 @@ export const WorkoutDetails = ({ title, reps, load, createdAt }) => {
     const formattedDate = new Date(createdAt).toLocaleDateString()
 
   return (
-    <li className='workout-details'>
+    <article className='workout-details'>
       <h2>{title}</h2>
       <p>
         <strong>Load (lbs): </strong>
@@ -12,7 +12,7 @@ export const WorkoutDetails = ({ title, reps, load, createdAt }) => {
         <strong>Reps: </strong>
         {reps}
       </p>
-      <p><time datetime={createdAt}>{formattedDate}</time></p>
-    </li>
+      <p><time dateTime={createdAt}>{formattedDate}</time></p>
+    </article>
   )
 }

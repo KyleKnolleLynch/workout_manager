@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { WorkoutDetails } from '../components'
+import { WorkoutDetails, WorkoutForm } from '../components'
 
 export const Home = () => {
   const [workoutData, setWorkoutData] = useState(null)
@@ -20,12 +20,11 @@ export const Home = () => {
   return (
     <main className='home'>
       <section className='workouts'>
-        <ul role='list'>
-          {workoutData?.map(workout => (
-            <WorkoutDetails key={workout._id} {...workout} />
-          ))}
-        </ul>
+        {workoutData?.map(workout => (
+          <WorkoutDetails key={workout._id} {...workout} />
+        ))}
       </section>
+      <WorkoutForm />
     </main>
   )
 }
