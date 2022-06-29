@@ -118,7 +118,7 @@ header a {
 /* home */
 .home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr;
   gap: 100px;
 }
 
@@ -142,15 +142,17 @@ header a {
   color: var(--clr-gray-700);
 }
 
-.workout-details span {
+.workout-details button {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
   background-color: var(--clr-white-100);
   color: var(clr-gray-800);
-  padding: 5px;
-  border-radius: 50%;
+  padding: 5px 10px;
+  border-radius: 100vmax;
+  border: none;
+  outline: 0;
 }
 
 /* new workout form */
@@ -183,4 +185,10 @@ form button {
   color: var(--clr-error);
   border: 1px solid var(--clr-error);
   border-radius: 5px;
+}
+
+@media screen and (min-width: 540px) {
+  .home {
+    grid-template-columns: 3fr 1fr;
+  }
 }

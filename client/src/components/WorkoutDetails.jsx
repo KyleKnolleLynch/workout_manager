@@ -1,5 +1,19 @@
-export const WorkoutDetails = ({ title, reps, load, createdAt }) => {
-    const formattedDate = new Date(createdAt).toLocaleDateString()
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
+
+export const WorkoutDetails = ({ _id, title, reps, load, createdAt }) => {
+  const { dispatch } = useWorkoutsContext()
+  const formattedDate = new Date(createdAt).toLocaleDateString()
+
+  const handleClick = async () => {
+    const response = await fetch(`/api/workouts/${_id}`, {
+      method: 'DELETE',
+    })
+    const json = await response.json()
+
+    if (response.ok) {
+      dispatch({ type: 'DELETE_WORKOUT', payload: json})
+    }
+  }
 
   return (
     <article className='workout-details'>
@@ -12,7 +26,10 @@ export const WorkoutDetails = ({ title, reps, load, createdAt }) => {
         <strong>Reps: </strong>
         {reps}
       </p>
-      <p><time dateTime={createdAt}>{formattedDate}</time></p>
+      <p>
+        <time dateTime={createdAt}>{formattedDate}</time>
+      </p>
+      <button onClick={handleClick}>Delete</button>
     </article>
   )
 }
