@@ -1,4 +1,5 @@
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
+import { FeatherTrash } from '../assets/svgIcons'
 
 export const WorkoutDetails = ({ _id, title, reps, load, createdAt }) => {
   const { dispatch } = useWorkoutsContext()
@@ -11,7 +12,7 @@ export const WorkoutDetails = ({ _id, title, reps, load, createdAt }) => {
     const json = await response.json()
 
     if (response.ok) {
-      dispatch({ type: 'DELETE_WORKOUT', payload: json})
+      dispatch({ type: 'DELETE_WORKOUT', payload: json })
     }
   }
 
@@ -27,9 +28,11 @@ export const WorkoutDetails = ({ _id, title, reps, load, createdAt }) => {
         {reps}
       </p>
       <p>
-        <time dateTime={createdAt}>{formattedDate}</time>
+       <small>Added: </small><time dateTime={createdAt}>{formattedDate}</time>
       </p>
-      <button onClick={handleClick}>Delete</button>
+      <button onClick={handleClick}>
+        <FeatherTrash />
+      </button>
     </article>
   )
 }

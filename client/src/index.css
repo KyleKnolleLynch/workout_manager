@@ -87,7 +87,9 @@ select {
 /* --- */
 
 a:hover,
-a:focus {
+a:focus,
+button:hover,
+button:focus {
   filter: brightness(150%);
 }
 
@@ -149,10 +151,19 @@ header a {
   cursor: pointer;
   background-color: var(--clr-white-100);
   color: var(clr-gray-800);
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 100vmax;
   border: none;
   outline: 0;
+}
+
+.workout-details button:hover,
+.workout-details button:focus {
+  filter: brightness(0.9);
+}
+
+.feather-trash-2 {
+  display: block;
 }
 
 /* new workout form */
@@ -178,13 +189,17 @@ form button {
   cursor: pointer;
 }
 
-.error {
+div.error {
   margin-block: 20px;
   padding: 10px;
   background-color: var(--clr-white-error-50);
   color: var(--clr-error);
   border: 1px solid var(--clr-error);
   border-radius: 5px;
+}
+
+input.error {
+  border: 1px solid var(--clr-error);
 }
 
 @media screen and (min-width: 540px) {

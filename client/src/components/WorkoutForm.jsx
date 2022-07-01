@@ -12,6 +12,8 @@ export const WorkoutForm = () => {
   }
 
   const [formData, setFormData] = useState(initialState)
+  const [emptyFields, setEmptyFields] = useState([])
+
   const { title, load, reps, error } = formData
 
   const handleInputChange = e => {
@@ -33,12 +35,14 @@ export const WorkoutForm = () => {
 
     if (!response.ok) {
       setFormData(state => ({ ...state, error: json.error }))
+      setEmptyFields(json.emptyFields)
     }
 
     if (response.ok) {
       console.log('new workout added', json)
       dispatch({type: 'CREATE_WORKOUT', payload: json})
       setFormData(initialState)
+      setEmptyFields([])
     }
   }
 
@@ -52,6 +56,7 @@ export const WorkoutForm = () => {
         onChange={handleInputChange}
         name='title'
         value={title}
+        className={emptyFields.includes('title') ? 'error' : '' }
       />
 
       <label htmlFor='load'>Load (in lbs):</label>
@@ -60,6 +65,7 @@ export const WorkoutForm = () => {
         onChange={handleInputChange}
         name='load'
         value={load}
+        className={emptyFields.includes('load') ? 'error' : '' }
       />
 
       <label htmlFor='reps'>Reps:</label>
@@ -68,6 +74,7 @@ export const WorkoutForm = () => {
         onChange={handleInputChange}
         name='reps'
         value={reps}
+        className={emptyFields.includes('reps') ? 'error' : '' }
       />
 
       <button>Add Workout</button>
